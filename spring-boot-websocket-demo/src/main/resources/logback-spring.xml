@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <property name="projectName" value="@project.artifactId@" />
+    <property name="LOG_LEVEL" value="INFO" />
+    <property name="LOG_PATH" value="logs/${projectName}"/>
+    <property name="LOG_FILE_NAME" value="${projectName}"/>
+    <property name="LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] [%X{X-TraceId}] %-5level %logger - %msg%n"/>
+
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/${LOG_FILE_NAME}-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxFileSize>500MB</maxFileSize>
+            <maxHistory>7</maxHistory>
+            <totalSizeCap>4GB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <!--async appender-->
+    <appender name ="asyncFile" class= "ch.qos.logback.classic.AsyncAppender">
+        <discardingThreshold >0</discardingThreshold>
+        <queueSize>256</queueSize>
+        <appender-ref ref ="FILE"/>
+    </appender>
+
+    <appender name ="asyncConsole" class= "ch.qos.logback.classic.AsyncAppender">
+        <discardingThreshold >0</discardingThreshold>
+        <queueSize>128</queueSize>
+        <appender-ref ref ="CONSOLE"/>
+    </appender>
+
+    <root level="${LOG_LEVEL}">
+        <appender-ref ref="asyncFile"/>
+        <appender-ref ref="asyncConsole"/>
+    </root>
+
+</configuration>

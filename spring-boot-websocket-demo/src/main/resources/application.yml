@@ -1,0 +1,28 @@
+server:
+  port: 8080
+  tomcat:
+    threads:
+      max: 800
+
+spring:
+  application:
+    name: juice-samples
+
+# jackson date
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      #文件后缀
+      suffix: .jsp
+
+#跨域
+## 允许原始域
+cors:
+  allowedOrigins: http://crm.xxx.com, https://crm.xxx.com, http://crm.xxx.test
+## 允许方法
+  allowedMethods: GET, POST, HEAD, PUT, DELETE
+  exposedHeaders:
