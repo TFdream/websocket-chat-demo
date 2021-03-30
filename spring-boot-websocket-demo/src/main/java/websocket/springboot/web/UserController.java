@@ -68,7 +68,7 @@ public class UserController {
     //=======
     @GetMapping("/hello/{username}")
     public ModelAndView hello(@PathVariable("username") String username) {
-        ModelAndView mav = new ModelAndView("/hello");
+        ModelAndView mav = new ModelAndView("hello");
         mav.addObject("username", username);
         return mav;
     }
