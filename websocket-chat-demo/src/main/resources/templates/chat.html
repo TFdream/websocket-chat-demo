@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Java后端WebSocket的Tomcat实现</title>
+    <title>基于WebSocket的聊天室实现</title>
     <script type="text/javascript" src="js/jquery.min.js"></script>
 </head>
 
@@ -21,7 +21,7 @@ Welcome<br/><input id="text" type="text" />
     //判断当前浏览器是否支持WebSocket
     if('WebSocket' in window) {
         //改成你的地址
-        websocket = new WebSocket("ws://127.0.0.1:8080/endpoint?token="+${token});
+        websocket = new WebSocket("ws://localhost:8088/chat?token="+${token});
     } else {
         alert('当前浏览器 Not support websocket')
     }
