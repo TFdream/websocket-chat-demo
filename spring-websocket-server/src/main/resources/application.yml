@@ -18,7 +18,7 @@ spring:
 ## 允许原始域
 cors:
   path:
-  allowedOrigins: http://localhost:8080, http://crm.xxx.com, https://crm.xxx.cn
+  allowedOrigins:
 ## 允许方法
   allowedMethods: GET, POST, HEAD, PUT, DELETE
   exposedHeaders:
