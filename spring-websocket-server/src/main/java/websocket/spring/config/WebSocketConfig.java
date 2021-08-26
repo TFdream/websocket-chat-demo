@@ -31,13 +31,13 @@ public class WebSocketConfig implements WebSocketConfigurer {
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
 
-        registry.addHandler(dispatcherHandler(), "/chat")
+        registry.addHandler(businessWebSocketHandler(), "/chat")
                 .addInterceptors(authHandshakeInterceptor())
                 .setAllowedOrigins("*");
     }
 
     @Bean
-    public WebSocketHandler dispatcherHandler() {
+    public WebSocketHandler businessWebSocketHandler() {
         return new BusinessWebSocketHandler();
     }
 

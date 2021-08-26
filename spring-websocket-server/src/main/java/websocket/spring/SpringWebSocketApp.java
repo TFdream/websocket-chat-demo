@@ -7,9 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author Ricky Fung
  */
 @SpringBootApplication
-public class SpringWsApp {
+public class SpringWebSocketApp {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringWsApp.class, args);
+        SpringApplication.run(SpringWebSocketApp.class, args);
     }
 }
