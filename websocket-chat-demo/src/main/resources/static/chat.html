@@ -16,7 +16,7 @@
     if(window.WebSocket) {
         //go on
         let token = getParameterByName("token");
-        socket = new WebSocket("ws://localhost:8088/hello?token="+token);
+        socket = new WebSocket("ws://localhost:8088/chat?token="+token);
         //相当于channelReado, ev 收到服务器端回送的消息
         socket.onmessage = function (ev) {
             var rt = document.getElementById("responseText");

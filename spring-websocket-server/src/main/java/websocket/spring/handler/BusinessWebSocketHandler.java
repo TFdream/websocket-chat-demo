@@ -7,7 +7,10 @@ import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.AbstractWebSocketHandler;
 import websocket.commons.entity.UserInfoDTO;
+import websocket.commons.util.DateUtils;
 import websocket.spring.session.UserSessionManager;
+
+import java.util.Date;
 
 /**
  * @author Ricky Fung
@@ -38,7 +41,8 @@ public class BusinessWebSocketHandler extends AbstractWebSocketHandler {
     }
 
     private void processRequest(UserInfoDTO user, String payload, WebSocketSession session) {
-
+        String body = String.format("%s === %s", DateUtils.format(new Date()), payload);
+        sessionManager.sendMessage(session, body);
     }
 
     //----------

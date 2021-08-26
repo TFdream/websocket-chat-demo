@@ -38,7 +38,7 @@ public class HttpCorsConfig {
 
     @Bean
     public CorsFilter corsFilter() {
-        LOG.info("客服呼叫中心-HTTP跨域, path:{}, allowedOrigins:{}", allowedOrigins);
+        LOG.info("客服呼叫中心-HTTP跨域, path:{}, allowedOrigins:{}", path, allowedOrigins);
 
         //1.添加CORS配置信息
         CorsConfiguration config = new CorsConfiguration();
